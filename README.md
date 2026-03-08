@@ -1,60 +1,119 @@
-# 🚀 Welcome to Z.ai Code Scaffold
+# 🕉️ Astha Gurukul - Vedic Sciences Education Platform
 
-A modern, production-ready web application scaffold powered by cutting-edge technologies, designed to accelerate your development with [Z.ai](https://chat.z.ai)'s AI-powered coding assistance.
+<div align="center">
 
-## ✨ Technology Stack
+![Astha Gurukul](public/images/hero-bg.png)
 
-This scaffold provides a robust foundation built with:
+**Where Science Meets Spirituality**
 
-### 🎯 Core Framework
-- **⚡ Next.js 16** - The React framework for production with App Router
-- **📘 TypeScript 5** - Type-safe JavaScript for better developer experience
-- **🎨 Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
+*A comprehensive multilingual platform for Vedic Astrology, Vastu Shastra, Numerology & Palmistry education*
 
-### 🧩 UI Components & Styling
-- **🧩 shadcn/ui** - High-quality, accessible components built on Radix UI
-- **🎯 Lucide React** - Beautiful & consistent icon library
-- **🌈 Framer Motion** - Production-ready motion library for React
-- **🎨 Next Themes** - Perfect dark mode in 2 lines of code
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 
-### 📋 Forms & Validation
-- **🎣 React Hook Form** - Performant forms with easy validation
-- **✅ Zod** - TypeScript-first schema validation
+</div>
 
-### 🔄 State Management & Data Fetching
-- **🐻 Zustand** - Simple, scalable state management
-- **🔄 TanStack Query** - Powerful data synchronization for React
-- **🌐 Fetch** - Promise-based HTTP request
+---
 
-### 🗄️ Database & Backend
-- **🗄️ Prisma** - Next-generation TypeScript ORM
-- **🔐 NextAuth.js** - Complete open-source authentication solution
+## 🌟 Overview
 
-### 🎨 Advanced UI Features
-- **📊 TanStack Table** - Headless UI for building tables and datagrids
-- **🖱️ DND Kit** - Modern drag and drop toolkit for React
-- **📊 Recharts** - Redefined chart library built with React and D3
-- **🖼️ Sharp** - High performance image processing
+Astha Gurukul is a modern digital platform dedicated to preserving and teaching the ancient Vedic sciences. Built with the **Saksham philosophy** (empowerment through divine science), the platform offers professional certifications in:
 
-### 🌍 Internationalization & Utilities
-- **🌍 Next Intl** - Internationalization library for Next.js
-- **📅 Date-fns** - Modern JavaScript date utility library
-- **🪝 ReactUse** - Collection of essential React hooks for modern development
+- 🔮 **Jyotish (Vedic Astrology)** - 12-month professional certification
+- 🏠 **Vastu Shastra** - 8-month architectural science certification
+- 🔢 **Numerology (Ank Jyotish)** - 6-month certification
+- ✋ **Palmistry (Samudrik Shastra)** - 6-month certification
 
-## 🎯 Why This Scaffold?
+## ✨ Features
 
-- **🏎️ Fast Development** - Pre-configured tooling and best practices
-- **🎨 Beautiful UI** - Complete shadcn/ui component library with advanced interactions
-- **🔒 Type Safety** - Full TypeScript configuration with Zod validation
-- **📱 Responsive** - Mobile-first design principles with smooth animations
-- **🗄️ Database Ready** - Prisma ORM configured for rapid backend development
-- **🔐 Auth Included** - NextAuth.js for secure authentication flows
-- **📊 Data Visualization** - Charts, tables, and drag-and-drop functionality
-- **🌍 i18n Ready** - Multi-language support with Next Intl
-- **🚀 Production Ready** - Optimized build and deployment settings
-- **🤖 AI-Friendly** - Structured codebase perfect for AI assistance
+### 🌐 Multilingual Support
+- Complete English and Hindi translations
+- Devanagari-optimized typography with Hind & Poppins fonts
+- Language switcher with localStorage persistence
 
-## 🚀 Quick Start
+### 🎨 Vedic Design System
+- **Saffron Color Palette**: Deep Saffron (#FF9933), Gold (#F4C430), Maroon
+- Sacred geometry SVG components (Om, Sri Yantra, Zodiac Wheel, Lotus)
+- Traditional iconography with modern UI principles
+
+### 📚 Comprehensive Course Information
+- Detailed curriculum with module breakdowns
+- Learning outcomes for each certification
+- Level indicators (Basic, Intermediate, Professional, Research)
+
+### 👨‍🏫 Expert Faculty Profiles
+- Traditional titles hierarchy (Jyotish Acharya, Visharada, Bhushan)
+- Academic and professional credentials
+- Specialization areas
+
+### 💬 Student Testimonials
+- Category filtering (Career, Personal, Professional)
+- Success stories with highlights
+- Pagination carousel
+
+### 📱 Contact & Enrollment
+- Contact form with course selection
+- WhatsApp Business integration for Indian market
+- Office hours and location information
+
+### 🎭 Animations & Interactions
+- Framer Motion animations throughout
+- Celestial rotation effects
+- Staggered content reveals
+- Smooth scroll navigation
+
+---
+
+## 🚀 Tech Stack
+
+| Category | Technology |
+|----------|------------|
+| **Framework** | Next.js 16 with App Router |
+| **Language** | TypeScript 5 |
+| **Styling** | Tailwind CSS 4 |
+| **UI Components** | shadcn/ui |
+| **Animations** | Framer Motion |
+| **Icons** | Lucide React |
+| **Fonts** | Hind, Poppins (Google Fonts) |
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── globals.css          # Global styles & Vedic color palette
+│   ├── layout.tsx           # Root layout with fonts & providers
+│   └── page.tsx             # Main page component
+├── components/
+│   ├── layout/
+│   │   ├── header.tsx       # Navigation with language switcher
+│   │   └── footer.tsx       # Footer with newsletter
+│   ├── sacred/
+│   │   └── sacred-symbols.tsx  # Om, Sri Yantra, Zodiac, Lotus
+│   ├── sections/
+│   │   ├── hero.tsx         # Hero section
+│   │   ├── stats.tsx        # Animated statistics
+│   │   ├── mission.tsx      # Saksham philosophy
+│   │   ├── courses.tsx      # Course offerings
+│   │   ├── why-us.tsx       # Key differentiators
+│   │   ├── faculty.tsx      # Faculty profiles
+│   │   ├── testimonials.tsx # Student stories
+│   │   ├── cta.tsx          # Call to action
+│   │   └── contact.tsx      # Contact form & info
+│   └── ui/                  # shadcn/ui components
+├── i18n/
+│   ├── context.tsx          # i18n provider & hook
+│   └── translations.ts      # EN/HI translations
+├── hooks/                   # Custom React hooks
+└── lib/                     # Utility functions
+```
+
+---
+
+## 🏃 Quick Start
 
 ```bash
 # Install dependencies
@@ -66,76 +125,70 @@ bun run dev
 # Build for production
 bun run build
 
-# Start production server
-bun start
+# Run linting
+bun run lint
 ```
-
-Open [http://localhost:3000](http://localhost:3000) to see your application running.
-
-## 🤖 Powered by Z.ai
-
-This scaffold is optimized for use with [Z.ai](https://chat.z.ai) - your AI assistant for:
-
-- **💻 Code Generation** - Generate components, pages, and features instantly
-- **🎨 UI Development** - Create beautiful interfaces with AI assistance  
-- **🔧 Bug Fixing** - Identify and resolve issues with intelligent suggestions
-- **📝 Documentation** - Auto-generate comprehensive documentation
-- **🚀 Optimization** - Performance improvements and best practices
-
-Ready to build something amazing? Start chatting with Z.ai at [chat.z.ai](https://chat.z.ai) and experience the future of AI-powered development!
-
-## 📁 Project Structure
-
-```
-src/
-├── app/                 # Next.js App Router pages
-├── components/          # Reusable React components
-│   └── ui/             # shadcn/ui components
-├── hooks/              # Custom React hooks
-└── lib/                # Utility functions and configurations
-```
-
-## 🎨 Available Features & Components
-
-This scaffold includes a comprehensive set of modern web development tools:
-
-### 🧩 UI Components (shadcn/ui)
-- **Layout**: Card, Separator, Aspect Ratio, Resizable Panels
-- **Forms**: Input, Textarea, Select, Checkbox, Radio Group, Switch
-- **Feedback**: Alert, Toast (Sonner), Progress, Skeleton
-- **Navigation**: Breadcrumb, Menubar, Navigation Menu, Pagination
-- **Overlay**: Dialog, Sheet, Popover, Tooltip, Hover Card
-- **Data Display**: Badge, Avatar, Calendar
-
-### 📊 Advanced Data Features
-- **Tables**: Powerful data tables with sorting, filtering, pagination (TanStack Table)
-- **Charts**: Beautiful visualizations with Recharts
-- **Forms**: Type-safe forms with React Hook Form + Zod validation
-
-### 🎨 Interactive Features
-- **Animations**: Smooth micro-interactions with Framer Motion
-- **Drag & Drop**: Modern drag-and-drop functionality with DND Kit
-- **Theme Switching**: Built-in dark/light mode support
-
-### 🔐 Backend Integration
-- **Authentication**: Ready-to-use auth flows with NextAuth.js
-- **Database**: Type-safe database operations with Prisma
-- **API Client**: HTTP requests with Fetch + TanStack Query
-- **State Management**: Simple and scalable with Zustand
-
-### 🌍 Production Features
-- **Internationalization**: Multi-language support with Next Intl
-- **Image Optimization**: Automatic image processing with Sharp
-- **Type Safety**: End-to-end TypeScript with Zod validation
-- **Essential Hooks**: 100+ useful React hooks with ReactUse for common patterns
-
-## 🤝 Get Started with Z.ai
-
-1. **Clone this scaffold** to jumpstart your project
-2. **Visit [chat.z.ai](https://chat.z.ai)** to access your AI coding assistant
-3. **Start building** with intelligent code generation and assistance
-4. **Deploy with confidence** using the production-ready setup
 
 ---
 
-Built with ❤️ for the developer community. Supercharged by [Z.ai](https://chat.z.ai) 🚀
+## 🎨 Vedic Color Palette
+
+| Color | Hex | Usage |
+|-------|-----|-------|
+| Deep Saffron | `#FF9933` | Primary buttons, brand headers |
+| Saffron Gold | `#F4C430` | Icons, decorative borders |
+| Maroon | `#8F0B0B` | Footer, strong dividers |
+| Mustard Gold | `#FFCC00` | Secondary accents |
+| Teal | `#008080` | Complementary color |
+
+---
+
+## 📜 Faculty Title Hierarchy
+
+| Title | Description |
+|-------|-------------|
+| **Jyotish Praveena** | Basic proficiency |
+| **Jyotish Visharada** | Advanced mastery |
+| **Jyotish Acharya** | Scholar/Teacher level |
+| **Jyotish Bhushan** | Research contribution |
+| **Vastu Visharad** | Vastu expertise |
+
+---
+
+## 🌍 Internationalization
+
+The platform supports:
+- **English (EN)** - Default language
+- **Hindi (HI)** - Complete Devanagari translations
+
+Language preference is persisted in localStorage.
+
+---
+
+## 📸 Screenshots
+
+### Hero Section
+![Hero](public/images/hero-bg.png)
+
+### Courses
+![Astrology Course](public/images/astrology-course.png)
+
+---
+
+## 🔗 Live Demo
+
+Visit the live website: [asthagurukul.com](https://asthagurukul.com)
+
+---
+
+## 📄 License
+
+© 2024 Astha Gurukul. All rights reserved.
+
+---
+
+<div align="center">
+
+**Made with devotion for Vedic wisdom** 🙏
+
+</div>
