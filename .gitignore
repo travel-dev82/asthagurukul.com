@@ -47,5 +47,9 @@ test
 prompt
 
 server.log
+
+# Deployment lock file
+.deploy.lock
+
 # Skills directory
 /skills/
