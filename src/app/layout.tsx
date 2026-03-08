@@ -1,37 +1,69 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Hind, Poppins } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { I18nProvider } from "@/i18n/context";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const hind = Hind({
+  variable: "--font-hind",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Z.ai Code Scaffold - AI-Powered Development",
-  description: "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-  keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
-  authors: [{ name: "Z.ai Team" }],
+  title: "Astha Gurukul | Vedic Sciences Education",
+  description: "Master the ancient wisdom of Jyotish (Astrology), Vastu Shastra, Numerology & Palmistry from expert Acharyas. 22+ years of researched curriculum with lifetime support.",
+  keywords: [
+    "Vedic Astrology", 
+    "Jyotish", 
+    "Vastu Shastra", 
+    "Numerology", 
+    "Palmistry", 
+    "Astrology Course",
+    "Vedic Sciences",
+    "Indian Astrology",
+    "Kundali",
+    "Astha Gurukul",
+    "ज्योतिष",
+    "वास्तु शास्त्र",
+    "अंक ज्योतिष",
+    "हस्तरेखा"
+  ],
+  authors: [{ name: "Astha Gurukul" }],
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-    url: "https://chat.z.ai",
-    siteName: "Z.ai",
+    title: "Astha Gurukul | Where Science Meets Spirituality",
+    description: "Study Vedic Astrology, Vastu Shastra, Numerology & Palmistry from expert Acharyas",
+    url: "https://asthagurukul.com",
+    siteName: "Astha Gurukul",
     type: "website",
+    locale: "en_IN",
+    alternateLocale: "hi_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "Astha Gurukul - Vedic Sciences Education",
+    description: "Master the ancient wisdom of Vedic sciences from expert Acharyas",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    languages: {
+      'en-IN': 'https://asthagurukul.com/en',
+      'hi-IN': 'https://asthagurukul.com/hi',
+    },
   },
 };
 
@@ -43,10 +75,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${hind.variable} ${poppins.variable} font-sans antialiased bg-background text-foreground`}
       >
-        {children}
-        <Toaster />
+        <I18nProvider>
+          {children}
+          <Toaster />
+        </I18nProvider>
       </body>
     </html>
   );
