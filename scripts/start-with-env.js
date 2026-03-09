@@ -2,18 +2,22 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 /**
- * Whats91 Chat - Production Start Script
+ * Astha Gurukul - Production Start Script with Environment
  * 
- * This script:
- * 1. Loads environment variables from .env file
- * 2. Validates required configuration
- * 3. Starts the Next.js standalone server
+ * This script loads environment variables from .env files and starts the Next.js server.
+ * It Works seamlessly with CloudPanel and PM2 deployment.
  * 
  * Usage:
  *   node scripts/start-with-env.js
  * 
  * With PM2:
- *   pm2 start ecosystem.config.js --env production
+ *   pm2 start ecosystem.config.js
+ *   pm2 start scripts/start-with-env.js
+ * 
+ * Environment Variables:
+ *   PORT         - Server port (default: 3000)
+ *   HOSTNAME     - Server host (default: 0.0.0.0)
+ *   NODE_ENV     - Node environment (default: production)
  */
 
 const path = require('path');
@@ -22,10 +26,13 @@ const fs = require('fs');
 // Get the project root directory
 const projectRoot = path.resolve(__dirname, '..');
 
+// Change to project root immediately
+process.chdir(projectRoot);
+
 console.log('');
-console.log('========================================');
-console.log('  Whats91 Chat - Production Server');
-console.log('========================================');
+console.log('═════════════════════════════════════════════════════════════');
+console.log('  🕉️  Astha Gurukul - Production Server');
+console.log('═════════════════════════════════════════════════════════════');
 console.log(`[Startup] Project root: ${projectRoot}`);
 console.log(`[Startup] Node version: ${process.version}`);
 console.log(`[Startup] NODE_ENV: ${process.env.NODE_ENV || 'production'}`);
@@ -84,13 +91,14 @@ function loadEnvFile(envPath) {
  * Validate required environment variables
  */
 function validateEnvironment() {
+  // Required variables (empty = nothing strictly required)
   const requiredVars = [];
+  
+  // Recommended variables
   const recommendedVars = [
     'DATABASE_URL',
     'NEXT_PUBLIC_APP_URL',
-  ];
-  const recommendedAnyOf = [
-    ['AUTH_SESSION_SECRET', 'NEXTAUTH_SECRET'],
+    'PORT',
   ];
   
   // Check required variables
@@ -104,13 +112,6 @@ function validateEnvironment() {
   const missingRecommended = recommendedVars.filter(v => !process.env[v]);
   if (missingRecommended.length > 0) {
     console.warn(`[Startup] Warning: Missing recommended environment variables: ${missingRecommended.join(', ')}`);
-  }
-
-  const missingRecommendedGroups = recommendedAnyOf
-    .filter((group) => !group.some((key) => process.env[key]))
-    .map((group) => group.join(' or '));
-  if (missingRecommendedGroups.length > 0) {
-    console.warn(`[Startup] Warning: Missing recommended auth secrets: ${missingRecommendedGroups.join(', ')}`);
   }
   
   console.log('[Startup] Environment validation passed');
@@ -127,6 +128,7 @@ if (!process.env.NODE_ENV) {
 
 // Load .env files in order of precedence
 const nodeEnv = process.env.NODE_ENV;
+
 const envFiles = [
   path.join(projectRoot, `.env.${nodeEnv}.local`),
   path.join(projectRoot, `.env.${nodeEnv}`),
@@ -152,8 +154,16 @@ validateEnvironment();
 // Set default PORT
 process.env.PORT = process.env.PORT || '3000';
 
-console.log(`[Startup] Server will run on port: ${process.env.PORT}`);
-console.log(`[Startup] LOG_LEVEL: ${process.env.LOG_LEVEL || 'debug (default)'}`);
+// Set default HOSTNAME
+process.env.HOSTNAME = process.env.HOSTNAME || '0.0.0.0';
+
+console.log('');
+console.log('[Startup] =======================================');
+console.log(`[Startup] Server Configuration:`);
+console.log(`[Startup]   Port: ${process.env.PORT}`);
+console.log(`[Startup]   Host: ${process.env.HOSTNAME}`);
+console.log(`[Startup]   NODE_ENV: ${process.env.NODE_ENV}`);
+console.log('[Startup] =======================================');
 console.log('');
 
 // Check if server file exists
@@ -169,6 +179,22 @@ if (!fs.existsSync(serverPath)) {
 const staticPath = path.join(projectRoot, '.next', 'standalone', '.next', 'static');
 if (!fs.existsSync(staticPath)) {
   console.warn('[Startup] Warning: Static files not found. Some assets may not load correctly.');
+}
+
+// Check if public folder exists in standalone
+const publicPath = path.join(projectRoot, '.next', 'standalone', 'public');
+if (!fs.existsSync(publicPath)) {
+  console.warn('[Startup] Warning: Public folder not found in standalone. Copying...');
+  try {
+    // Copy public folder to standalone
+    const sourcePublic = path.join(projectRoot, 'public');
+    if (fs.existsSync(sourcePublic)) {
+      fs.cpSync(sourcePublic, publicPath, { recursive: true });
+      console.log('[Startup] Copied public folder to standalone');
+    }
+  } catch (err) {
+    console.warn(`[Startup] Could not copy public folder: ${err.message}`);
+  }
 }
 
 console.log('[Startup] Starting Next.js server...');

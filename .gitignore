@@ -51,5 +51,8 @@ server.log
 # Deployment lock file
 .deploy.lock
 
+# Logs directory
+/logs/
+
 # Skills directory
 /skills/
