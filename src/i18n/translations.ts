@@ -13,7 +13,7 @@ export const translations = {
     home: {
       hero: {
         tagline: 'Where Science Meets Spirituality',
-        title: 'Master the Ancient Wisdom of',
+        title: 'Master the Ancient Wisdom of DEV',
         titleHighlight: 'Vedic Sciences',
         subtitle: 'Study Jyotish (Astrology), Vastu Shastra, Numerology & Palmistry from expert Acharyas with 22+ years of researched curriculum.',
         cta: 'Begin Your Journey',
