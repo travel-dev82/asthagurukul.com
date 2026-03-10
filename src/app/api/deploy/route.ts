@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { spawn } from "child_process";
+import { exec } from "child_process";
 import path from "path";
 import fs from "fs";
 
@@ -19,7 +19,6 @@ import fs from "fs";
 export async function POST(request: Request) {
   try {
     // Accept any payload without validation
-    // We read the body to consume it but don't validate
     try {
       await request.json();
     } catch {
@@ -35,29 +34,45 @@ export async function POST(request: Request) {
     console.log(`[deploy-api] Triggering deployment from: ${projectRoot}`);
     console.log(`[deploy-api] Deploy script: ${deployScriptPath}`);
 
-    // Spawn the deployment script as a detached process
-    // This allows it to run independently of the API request
-    const deployProcess = spawn("node", [deployScriptPath], {
-      cwd: projectRoot, // Ensure it runs from root directory
-      detached: true,   // Run independently of parent process
-      stdio: "ignore",  // Ignore stdin, stdout, stderr
+    // Check if deploy script exists
+    if (!fs.existsSync(deployScriptPath)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Deploy script not found",
+          path: deployScriptPath,
+        },
+        { status: 500 }
+      );
+    }
+
+    // Use exec with shell command to avoid Turbopack path resolution issues
+    // The '&' at the end runs the process in background (Linux/Mac)
+    // For Windows compatibility, we use a different approach
+    const isWindows = process.platform === "win32";
+    const backgroundCommand = isWindows 
+      ? `start /B node "${deployScriptPath}"`
+      : `node "${deployScriptPath}" &`;
+    
+    exec(backgroundCommand, {
+      cwd: projectRoot,
       env: {
         ...process.env,
         DEPLOY_TRIGGERED_BY: "api",
         DEPLOY_TRIGGERED_AT: new Date().toISOString(),
       },
+    }, (error) => {
+      if (error) {
+        console.error(`[deploy-api] Deployment error: ${error.message}`);
+      }
     });
 
-    // Unref the process to allow the parent to exit independently
-    deployProcess.unref();
-
-    console.log(`[deploy-api] Deployment process started with PID: ${deployProcess.pid}`);
+    console.log(`[deploy-api] Deployment process started`);
 
     // Return immediately - deployment runs in background
     return NextResponse.json({
       success: true,
       message: "Deployment triggered successfully",
-      pid: deployProcess.pid,
       timestamp: new Date().toISOString(),
       projectRoot: projectRoot,
     });
