@@ -391,7 +391,7 @@ export const translations = {
         },
         phone: {
           label: 'Phone',
-          value: '+91 98765 43210',
+          value: '+91 70007 82082',
         },
         email: {
           label: 'Email',

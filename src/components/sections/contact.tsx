@@ -58,7 +58,7 @@ export function ContactSection() {
   };
 
   const handleWhatsApp = () => {
-    const phoneNumber = '919876543210';
+    const phoneNumber = '917000782082';
     const message = encodeURIComponent(t.contact.whatsapp.message);
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
